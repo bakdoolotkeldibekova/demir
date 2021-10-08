@@ -47,13 +47,12 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         http.cors().and().csrf().disable().authorizeRequests()
                 .antMatchers(AUTH_WHITELIST).permitAll()
-//                .antMatchers("/auth/login").permitAll()
-//                .antMatchers("/auth/hello").permitAll()
-//                .antMatchers("/user/registration").permitAll()
-//                .antMatchers(HttpMethod.GET, "/user/get").hasRole("ADMIN")
-//
-//                .anyRequest().authenticated()
-                         .anyRequest().permitAll()
+                .antMatchers("/auth/login").permitAll()
+                .antMatchers("/auth/hello").permitAll()
+                .antMatchers("/user/registration").permitAll()
+                .antMatchers(HttpMethod.GET, "/user/get").hasRole("ADMIN")
+
+                .anyRequest().authenticated()
                 .and().exceptionHandling()
                 .authenticationEntryPoint(new HttpStatusEntryPoint(HttpStatus.UNAUTHORIZED))
                 .and().sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);

@@ -41,10 +41,7 @@ public class TransactionServiceImpl implements TransactionService {
         List<Transaction> transactionList = user.getTransactionList();
         transactionList.add(transaction);
         user.setTransactionList(transactionList);
-        System.out.println("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA3");
-        System.out.println("UUUUUUUUUUUUUUUSSSSSSSSSSSSSSSSSSSSSSSSEEEEEEEEEEEERR: " + user);
         userService.update(user);
-        System.out.println("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA4");
 
         return ResponseEntity.ok().body(transaction);
     }
